@@ -1,0 +1,13 @@
+#footer-container {
+  background: linear-gradient(75deg, rgb(21, 30, 209), rgb(5, 163, 237));
+  height: auto;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  margin-top: 80px;
+}
+#copyright{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
