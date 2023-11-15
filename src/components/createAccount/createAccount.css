@@ -1,5 +1,37 @@
-#create-acount-container{
-    display:flex;
+input{
+    width: 80%;
+    font-size: 15px;
+}
+
+#create-acount-container {
+  border: 2px solid grey;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+#create-name-surname{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#create-acount-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+#create-password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+#register-button{
+    display: flex;
     justify-content: center;
     align-items: center;
 }

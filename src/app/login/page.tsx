@@ -1,4 +1,5 @@
 import Login from "@/components/Login/Login";
+import Link from "next/link";
 
 function login() {
   return (
@@ -21,7 +22,7 @@ function login() {
         }}
       >
         <h4 style={{paddingRight:'4px'}}>Don't have an acount create one </h4>
-        <a href="./create-account">here.</a>
+        <Link href="./create-account">here.</Link>
       </div>
     </>
   );

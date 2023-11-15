@@ -68,7 +68,7 @@ nav {
     justify-content: center;
     gap: 1.5rem;
     background-color: var(--mainColor);
-    transition: 0.4s;
+    transition: 0.6s;
   }
 
   header .responsive_nav {
