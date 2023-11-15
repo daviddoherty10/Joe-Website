@@ -1,5 +1,5 @@
-import { useState } from "react";
 import pb from "@/lib/pocketbase";
+import { useMutation } from "react-query";
 
 export default function useLogin() {
   interface Login {
@@ -7,19 +7,11 @@ export default function useLogin() {
     password: string;
   }
 
-  const [isLoading, setLoading] = useState(false);
-
   async function login({ email, password }: Login) {
-    setLoading(true);
-    try {
       const authData = await pb
         .collection("users")
         .authWithPassword(email, password);
-    } catch (e) {
-      alert(e);
-    }
-    setLoading(false);
   }
 
-  return { login, isLoading };
+  return useMutation(login);
 }

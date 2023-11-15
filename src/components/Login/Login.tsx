@@ -13,7 +13,7 @@ interface LoginData {
 }
 
 function Login() {
-  const { login, isLoading } = useLogin();
+  const { mutate: login, isLoading, isError } = useLogin();
 
   const isLoggedIn = pb.authStore.isValid;
 
@@ -31,7 +31,6 @@ function Login() {
 
   return (
     <>
-      {isLoggedIn ? <h1>Logged in</h1> : <h1>Not Logged in</h1>}
       <div id="login-container">
         <div id="login-head">
           <h1>Login</h1>
@@ -61,6 +60,9 @@ function Login() {
                 <button type="submit" disabled={isLoading}>
                   {isLoading ? "Logging in..." : "Login"}
                 </button>
+                <div>
+                  <h5>{isError && <p style={{color:'red'}}>Invalid email or password</p>}</h5>
+                </div>
               </div>
             </div>
           </form>
