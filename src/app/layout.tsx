@@ -4,8 +4,6 @@ import Footer from "@/components/footer/footer";
 import Navbar from "@/components/navbar/navbar";
 import { ReactQueryProvider } from "@/react-query/query-client";
 
-// Create a new instance of QueryClient
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -22,9 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-          <ReactQueryProvider>
-            {children}
-          </ReactQueryProvider>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
         <Footer />
       </body>
     </html>

@@ -18,7 +18,7 @@ function Navbar() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    setLoggedIn(pb.authStore.isValid); // Check login status on component mount
+    setLoggedIn(pb.authStore.isValid);
   }, []);
 
   return (
@@ -42,7 +42,13 @@ function Navbar() {
             onClick={() => {
               logout(); // Invoke the logout function
               setLoggedIn(false); // Update loggedIn state
+              setActive(false);
             }}
+            className="nav-btn"
+            style={{ border:'none',
+                  background:'none',
+                  color:'var(--textColor)',
+                  fontSize:"1.4rem",}}
           >
             Sign Out
           </button>
@@ -64,7 +70,7 @@ function Navbar() {
         className="nav-btn"
         onClick={() => {
           setActive(true);
-          setLoggedIn(pb.authStore.isValid); // Incorrect usage: will store the function reference
+          setLoggedIn(pb.authStore.isValid);
         }}
       >
         <FaBars />

@@ -1,6 +1,5 @@
-input{
-    width: 80%;
-    font-size: 15px;
+input {
+  font-size: 15px;
 }
 
 #create-acount-container {
@@ -10,10 +9,11 @@ input{
   margin-top: 50px;
 }
 
-#create-name-surname{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#create-name-surname {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
 }
 
 #create-acount-form {
@@ -30,8 +30,8 @@ input{
   padding-bottom: 15px;
 }
 
-#register-button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#register-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

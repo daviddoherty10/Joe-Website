@@ -1,4 +1,5 @@
 "use client";
+
 import { BiUser } from "react-icons/bi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { redirect } from "next/navigation";
@@ -26,7 +27,6 @@ function Login() {
 
   if (isLoggedIn) {
     redirect("/store");
-    return null; // Add a return statement here as redirect() might not immediately terminate execution
   }
 
   return (
@@ -60,9 +60,19 @@ function Login() {
                 <button type="submit" disabled={isLoading}>
                   {isLoading ? "Logging in..." : "Login"}
                 </button>
-                <div>
-                  <h5>{isError && <p style={{color:'red'}}>Invalid email or password</p>}</h5>
-                </div>
+              </div>
+              <div>
+                <h5
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  {isError && (
+                    <p style={{ color: "red" }}>Invalid email or password</p>
+                  )}
+                </h5>
               </div>
             </div>
           </form>

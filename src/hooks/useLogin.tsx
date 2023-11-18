@@ -8,9 +8,9 @@ export default function useLogin() {
   }
 
   async function login({ email, password }: Login) {
-      const authData = await pb
-        .collection("users")
-        .authWithPassword(email, password);
+    const authData = await pb
+      .collection("users")
+      .authWithPassword(email, password);
   }
 
   return useMutation(login);
