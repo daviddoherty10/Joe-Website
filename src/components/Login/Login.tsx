@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import pb from "@/lib/pocketbase";
 import useLogin from "@/hooks/useLogin";
 import "./login.css";
+import { useEffect } from "react";
 
 interface LoginData {
   email: string;
@@ -25,9 +26,11 @@ function Login() {
     reset();
   };
 
-  if (isLoggedIn) {
-    redirect("/store");
-  }
+  useEffect(() => {
+    if (isLoggedIn) {
+      ("/store"); // Redirect if user is logged in
+    }
+  }, [isLoggedIn]);
 
   return (
     <>

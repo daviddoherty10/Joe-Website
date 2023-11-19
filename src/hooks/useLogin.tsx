@@ -12,6 +12,5 @@ export default function useLogin() {
       .collection("users")
       .authWithPassword(email, password);
   }
-
   return useMutation(login);
 }

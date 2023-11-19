@@ -6,20 +6,20 @@ import "./navbar.css";
 import Link from "next/link";
 import pb from "../../lib/pocketbase";
 import useLogout from "@/hooks/useLogout";
+import { redirect } from "next/navigation";
 
 function Navbar() {
   const [active, setActive] = useState(false);
-  const logout = useLogout();
-
-  const handleLink = () => {
-    setActive(false);
-  };
-
   const [loggedIn, setLoggedIn] = useState(false);
+  const logout = useLogout();
 
   useEffect(() => {
     setLoggedIn(pb.authStore.isValid);
   }, []);
+
+  const handleLink = () => {
+    setActive(false);
+  };
 
   return (
     <header>
@@ -37,21 +37,24 @@ function Navbar() {
         <Link onClick={handleLink} href="./forum">
           Forum
         </Link>
-        {loggedIn ? (
-          <button
+        {loggedIn === true ? (
+          <Link
             onClick={() => {
               logout(); // Invoke the logout function
               setLoggedIn(false); // Update loggedIn state
               setActive(false);
             }}
             className="nav-btn"
-            style={{ border:'none',
-                  background:'none',
-                  color:'var(--textColor)',
-                  fontSize:"1.4rem",}}
+            style={{
+              border: "none",
+              background: "none",
+              color: "var(--textColor)",
+              fontSize: "1.4rem",
+            }}
+            href='./login'
           >
             Sign Out
-          </button>
+          </Link>
         ) : (
           <Link onClick={handleLink} href="./login">
             Login
@@ -71,6 +74,7 @@ function Navbar() {
         onClick={() => {
           setActive(true);
           setLoggedIn(pb.authStore.isValid);
+          redirect("./login");
         }}
       >
         <FaBars />

@@ -1,30 +1,33 @@
 import { useState, useEffect } from "react";
 import pb from "@/lib/pocketbase";
 
+interface UserData {
+  verified: boolean;
+  // Add other properties based on your user data model
+}
+
 export default function useVerified() {
-  const [isVerified, setVerified] = useState(false);
+  const [isVerified, setVerified] = useState<boolean>(false);
 
   useEffect(() => {
-    async function checkVerified() {
-      const id = pb.authStore.model?.id;
+    async function fetchUserData() {
+      const isLoggedIn: boolean = pb.authStore.isValid;
 
-      const userData = await pb.collection("users").getOne(id);
-      setVerified(userData.verified);
+      if (isLoggedIn) {
+        const id: string | undefined = pb.authStore.model?.id;
+        if (id) {
+          const userData: UserData | undefined = await pb.collection("users").getOne(id);
+
+          if (userData) {
+            setVerified(userData.verified);
+          }
+        }
+      }
     }
 
-    const isLoggedIn = pb.authStore.isValid;
-    if (isLoggedIn) {
-      checkVerified();
-    }
+    fetchUserData();
   }, []);
-
-  async function checkVerified() {
-    const email = await pb.authStore.model?.email;
-    const res = await pb.collection("users").requestVerification(email);
-    if (res) {
-      alert("Verification email sent");
-    }
-  }
 
   return { isVerified };
 }
+

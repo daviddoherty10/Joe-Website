@@ -1,23 +1,36 @@
 "use client";
-
-import React from "react";
 import "./createAccount.css";
 import { useForm } from "react-hook-form";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
+import { redirect } from "next/navigation";
+import pb from "@/lib/pocketbase";
 
 function CreateAccount() {
-  interface createAccount {
+  interface CreateAccountState {
+    username: string;
     name: string;
     surname: string;
     email: string;
-    phone: string;
+    phone: number;
     password: string;
+    emailVisibility: boolean;
+    passwordConfirm: string;
   }
 
-  const { register, handleSubmit, reset } = useForm<createAccount>();
+  const { register, handleSubmit, reset } = useForm<CreateAccountState>();
+
+  const onSubmit = async (data: CreateAccountState) => {
+    try {
+      await pb.collection("users").create(data);
+    } catch (error) {
+      console.error("Error creating account:", error);
+    }
+    reset();
+  };
+
   return (
     <>
       <div id="create-acount-container">
@@ -31,7 +44,7 @@ function CreateAccount() {
           <h1>Create Account</h1>
         </div>
         <div>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div id="create-account-form">
               <div id="create-name-surname">
                 <FaUser />
@@ -43,31 +56,31 @@ function CreateAccount() {
                   <input type="text" placeholder="Name" />
                 </div>
                 <div>
-                  <input type="text" placeholder="Surname" />
+                  <input {...register('name', { required: 'First name is required' })} />
                 </div>
               </div>
             </div>
             <div style={{ paddingBottom: "15px" }}>
               <div className="create-name-surname">
                 <MdEmail />
-                <input type="text" placeholder="Email" />
+                <input {...register('email', { required: 'Email is required' })} />
               </div>
             </div>
             <div className="create-name-surname">
               <div style={{ marginRight: "10px" }}>
                 <FaPhoneAlt />
               </div>
-              <input type="text" placeholder="Phone" />
+              <input {...register('phone', { required: 'Phone is required' })} />
             </div>
             <div id="create-password">
               <div style={{ paddingRight: "10px" }}>
                 <FaLock />
               </div>
               <div>
-                <input type="password" placeholder="Password" />
+              <input {...register('password', { required: 'Phone is required' })} />
               </div>
               <div>
-                <input type="password" placeholder="Re-type Password" />
+              <input {...register('passwordConfirm', { required: 'Phone is required' })} />
               </div>
             </div>
 
@@ -75,7 +88,9 @@ function CreateAccount() {
               <input
                 type="submit"
                 value={"Register"}
-                onClick={handleSubmit()}
+                onClick={() => {
+                  redirect("create-account/verify-account");
+                }}
               />
             </div>
           </form>
