@@ -1,12 +1,12 @@
 "use client";
 
+import "./login.css";
 import { BiUser } from "react-icons/bi";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { redirect } from "next/navigation";
 import { useForm } from "react-hook-form";
 import pb from "@/lib/pocketbase";
 import useLogin from "@/hooks/useLogin";
-import "./login.css";
 import { useEffect } from "react";
 
 interface LoginData {
@@ -28,59 +28,49 @@ function Login() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      ("/store"); // Redirect if user is logged in
+      redirect("/create-account/verify-account"); // Redirect if user is logged in
     }
   }, [isLoggedIn]);
 
   return (
     <>
-      <div id="login-container">
-        <div id="login-head">
-          <h1>Login</h1>
-        </div>
-        <div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <BiUser />
-              <input
-                type="text"
-                id="input-username"
-                placeholder=" Username"
-                {...register("email")}
-              />
-            </div>
-            <div>
-              <RiLockPasswordLine />
-              <input
-                id="input-password"
-                type="password"
-                placeholder=" Password"
-                {...register("password")}
-              />
-            </div>
-            <div>
-              <div id="login-form-container">
-                <button type="submit" disabled={isLoading}>
-                  {isLoading ? "Logging in..." : "Login"}
-                </button>
-              </div>
-              <div>
-                <h5
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  {isError && (
-                    <p style={{ color: "red" }}>Invalid email or password</p>
-                  )}
-                </h5>
-              </div>
-            </div>
-          </form>
-        </div>
+<div id="unique-login-container">
+      <div id="unique-login-head">
+        <h1>Login</h1>
       </div>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <BiUser />
+            <input
+              type="text"
+              id="input-username"
+              className="unique-input"
+              placeholder=" Username"
+              {...register("email")}
+            />
+          </div>
+          <div>
+            <RiLockPasswordLine />
+            <input
+              id="input-password"
+              className="unique-input"
+              type="password"
+              placeholder=" Password"
+              {...register("password")}
+            />
+          </div>
+          <div id="unique-login-form-container">
+            <button type="submit" disabled={isLoading}>
+              {isLoading ? "Logging in..." : "Login"}
+            </button>
+          </div>
+          <div className="unique-error-message">
+            {isError && <p style={{ color: "red" }}>Invalid email or password</p>}
+          </div>
+        </form>
+      </div>
+    </div>
     </>
   );
 }

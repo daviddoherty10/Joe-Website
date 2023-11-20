@@ -1,36 +1,42 @@
+/* Styles for input elements */
 input {
   font-size: 15px;
 }
 
-#create-acount-container {
+/* Styles for the create account container */
+#unique-create-acount-container {
   border: 2px solid grey;
   border-radius: 15px;
   padding: 20px;
   margin-top: 50px;
 }
 
-#create-name-surname {
+/* Styles for name and surname section */
+#unique-create-name-surname {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-bottom: 15px;
 }
 
-#create-acount-form {
+/* Styles for the create account form */
+#unique-create-account-form {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 15px;
 }
 
-#create-password {
+/* Styles for the password section */
+#unique-create-password {
   display: flex;
   align-items: center;
   justify-content: center;
   padding-bottom: 15px;
 }
 
-#register-button {
+/* Styles for the register button */
+#unique-register-button {
   display: flex;
   justify-content: center;
   align-items: center;

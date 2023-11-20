@@ -1,4 +1,6 @@
 Fix Navbar
-Finish Create Account
+Reset Password
 References Page
 Forums Page: Real time api?
+Store Page
+User Dashboard

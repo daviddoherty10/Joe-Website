@@ -6,6 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { redirect } from "next/navigation";
+import { useState } from "react";
 import pb from "@/lib/pocketbase";
 
 function CreateAccount() {
@@ -21,6 +22,7 @@ function CreateAccount() {
   }
 
   const { register, handleSubmit, reset } = useForm<CreateAccountState>();
+  const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = async (data: CreateAccountState) => {
     try {
@@ -29,73 +31,76 @@ function CreateAccount() {
       console.error("Error creating account:", error);
     }
     reset();
+    setSubmitted(true);
   };
+
+  if (submitted == true) {
+    redirect("/login");
+  }
 
   return (
     <>
-      <div id="create-acount-container">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <h1>Create Account</h1>
-        </div>
-        <div>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div id="create-account-form">
-              <div id="create-name-surname">
-                <FaUser />
-                <div
-                  style={{
-                    marginRight: "20px",
-                  }}
-                >
-                  <input type="text" placeholder="Name" />
-                </div>
-                <div>
-                  <input {...register('name', { required: 'First name is required' })} />
-                </div>
-              </div>
-            </div>
-            <div style={{ paddingBottom: "15px" }}>
-              <div className="create-name-surname">
-                <MdEmail />
-                <input {...register('email', { required: 'Email is required' })} />
-              </div>
-            </div>
-            <div className="create-name-surname">
-              <div style={{ marginRight: "10px" }}>
-                <FaPhoneAlt />
-              </div>
-              <input {...register('phone', { required: 'Phone is required' })} />
-            </div>
-            <div id="create-password">
-              <div style={{ paddingRight: "10px" }}>
-                <FaLock />
+      <div id="unique-create-acount-container">
+      <div>
+        <h1>Create Account</h1>
+      </div>
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div id="unique-create-account-form">
+            <div id="unique-create-name-surname">
+              <FaUser />
+              <div>
+                <input type="text" placeholder="Name" />
               </div>
               <div>
-              <input {...register('password', { required: 'Phone is required' })} />
-              </div>
-              <div>
-              <input {...register('passwordConfirm', { required: 'Phone is required' })} />
+                <input
+                  {...register('name', {
+                    required: 'First name is required',
+                  })}
+                />
               </div>
             </div>
-
-            <div id="register-button">
+          </div>
+          <div>
+            <div className="unique-create-name-surname">
+              <MdEmail />
               <input
-                type="submit"
-                value={"Register"}
-                onClick={() => {
-                  redirect("create-account/verify-account");
-                }}
+                {...register('email', { required: 'Email is required' })}
               />
             </div>
-          </form>
-        </div>
+          </div>
+          <div className="unique-create-name-surname">
+            <div>
+              <FaPhoneAlt />
+            </div>
+            <input
+              {...register('phone', { required: 'Phone is required' })}
+            />
+          </div>
+          <div id="unique-create-password">
+            <div>
+              <FaLock />
+            </div>
+            <div>
+              <input
+                {...register('password', { required: 'Password is required' })}
+              />
+            </div>
+            <div>
+              <input
+                {...register('passwordConfirm', {
+                  required: 'Please confirm password',
+                })}
+              />
+            </div>
+          </div>
+
+          <div id="unique-register-button">
+            <input type="submit" value={'Register'} />
+          </div>
+        </form>
       </div>
+    </div>
     </>
   );
 }
