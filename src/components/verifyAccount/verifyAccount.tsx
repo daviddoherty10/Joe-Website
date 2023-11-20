@@ -1,48 +1,51 @@
 "use client";
 
-import useVerified from "@/hooks/useVerified";
 import { useEffect } from "react";
 import pb from "@/lib/pocketbase";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
+import useVerified from "@/hooks/useVerified";
+
+interface User {
+  id: string;
+  verified: boolean;
+  // Add other necessary properties
+}
 
 function VerifyAccount() {
-  const { isVerified, requestVerification } = useVerified();
-
   const router = useRouter();
+  const isLoggedIn: boolean = pb.authStore.isValid;
+
+  useEffect(() => {
+    if (isLoggedIn === false) {
+      router.push("/create-account");
+    }
+  }, [isLoggedIn, router]);
+
+  const { isVerified, requestVerification } = useVerified();
 
   useEffect(() => {
     if (isVerified === true) {
-      return router.push('/store');
+      router.push("/store");
     }
-  }, [isVerified]);
+  }, [isVerified, router]);
 
-  async function handleVerificationRequest() {
+  async function handleVerificationRequest(): Promise<void> {
     await requestVerification();
     // Perform any other actions after requesting verification if needed
   }
 
-  async function handleVerificationCheck() {
-    // Logic to check if the user is verified
-    // Assuming you have a function in your useVerified hook for this purpose
+  async function handleVerificationCheck(): Promise<void> {
     const userIsVerified = await checkUserVerificationStatus();
     if (userIsVerified === true) {
-      return router.push('/store')
+      router.push("/store");
     } else {
-      // Handle the case where the user is not verified
       console.log("User is not verified.");
     }
   }
 
-  async function checkUserVerificationStatus() {
-    // Logic to query the database or perform checks for user verification status
-    // Use the necessary data from your useVerified hook or other sources
-    // Example: const user = await pb.collection("users").get(/* Query */);
-    // Example: return user?.verified || false;
-
-    // For the sake of an example, assuming user.verified is a boolean indicating verification status
-    // Replace this with your database query logic
+  async function checkUserVerificationStatus(): Promise<boolean> {
     const id = pb.authStore.model?.id;
-    const user = await pb.collection("users").getOne(id);
+    const user: User | null = await pb.collection("users").getOne(id);
     return user?.verified || false;
   }
 
@@ -66,3 +69,4 @@ function VerifyAccount() {
 }
 
 export default VerifyAccount;
+
