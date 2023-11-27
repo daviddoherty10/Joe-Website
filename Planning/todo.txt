@@ -1,6 +1,14 @@
-Fix Navbar
-Reset Password
-References Page
-Forums Page: Real time api?
-Store Page
-User Dashboard
+First:{
+    Fix Navbar
+    Reset Password
+    References Page
+    Forums Page: Real time api?
+    Store Page
+    User Dashboard
+    Session management
+    Sidebar forum navigation
+}
+
+Then {
+    Refactor
+}

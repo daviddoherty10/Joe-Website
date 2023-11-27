@@ -1,4 +1,4 @@
-import CreateAccount from "@/components/createAccount/createAccount";
+import CreateAccount from "../../components/createAccount/createAccount";
 
 function createAccount() {
   return (

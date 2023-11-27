@@ -1,0 +1,18 @@
+#sidebar-li{
+    padding-left: 10px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    background-color: grey;
+}
+
+#sidebar-link{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    padding-left: 8px;
+}
+
+#sidebar-container-forum{
+    height: 100%;
+    width: 200px;
+}

@@ -5,8 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import "./navbar.css";
 import Link from "next/link";
 import pb from "../../lib/pocketbase";
-import useLogout from "@/hooks/useLogout";
-import { redirect } from "next/navigation";
+import useLogout from "../../hooks/useLogout/useLogout";
 
 function Navbar() {
   const [active, setActive] = useState(false);
@@ -14,7 +13,7 @@ function Navbar() {
   const logout = useLogout();
 
   useEffect(() => {
-    setLoggedIn(pb.authStore.isValid);
+    setLoggedIn(pb.authStore.isValid || false);
   }, []);
 
   const handleLink = () => {
@@ -51,7 +50,7 @@ function Navbar() {
               color: "var(--textColor)",
               fontSize: "1.4rem",
             }}
-            href='./login'
+            href="./login"
           >
             Sign Out
           </Link>
@@ -73,8 +72,6 @@ function Navbar() {
         className="nav-btn"
         onClick={() => {
           setActive(true);
-          setLoggedIn(pb.authStore.isValid);
-          redirect("./login");
         }}
       >
         <FaBars />

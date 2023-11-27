@@ -1,0 +1,17 @@
+#loading-container {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  margin-top: 30%;
+  margin-bottom: 30%;
+  color: grey;
+}
+
+#not-found-container {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  margin-top: 30%;
+  margin-bottom: 30%;
+  color: grey;
+}

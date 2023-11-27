@@ -1,5 +1,5 @@
 import React from "react";
-import VerifyAccount from "@/components/verifyAccount/verifyAccount";
+import VerifyAccount from "../../../components/verifyAccount/verifyAccount";
 
 function verifyAccount() {
   return (

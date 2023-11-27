@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import pb from "@/lib/pocketbase";
+import pb from "../../lib/pocketbase";
 
 function References() {
   useEffect(() => {
@@ -20,7 +20,13 @@ function References() {
     getReferences();
   }, []); // Empty dependency array ensures this runs once when the component mounts
 
-  return <></>; // Or your actual JSX for the component
+  return (
+    <>
+      <div>
+        {}
+      </div>
+    </>
+  ); // Or your actual JSX for the component
 }
 
 export default References;

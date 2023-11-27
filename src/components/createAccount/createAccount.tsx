@@ -7,7 +7,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { redirect } from "next/navigation";
 import { useState } from "react";
-import pb from "@/lib/pocketbase";
+import pb from "../../lib/pocketbase";
 
 function CreateAccount() {
   interface CreateAccountState {

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
-import pb from "@/lib/pocketbase";
+import pb from "../../lib/pocketbase";
 import { useRouter } from "next/navigation";
-import useVerified from "@/hooks/useVerified";
+import useVerified from "../../hooks/useVerified/useVerified";
 
 interface User {
   id: string;
