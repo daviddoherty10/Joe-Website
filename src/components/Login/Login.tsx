@@ -51,7 +51,7 @@ function Login() {
                 type="text"
                 id="input-username"
                 className="unique-input"
-                placeholder=" Username"
+                placeholder=" Email"
                 {...register("email")}
               />
             </div>

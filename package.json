@@ -16,7 +16,8 @@
     "react-hook-form": "^7.48.2",
     "react-icons": "^4.11.0",
     "react-query": "^3.39.3",
-    "react-workshop": "^0.0.7"
+    "react-workshop": "^0.0.7",
+    "tailwind": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^20",

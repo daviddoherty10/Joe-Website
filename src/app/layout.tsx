@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Footer from "../components/footer/footer";
 import Navbar from "../components/navbar/navbar";
 import { ReactQueryProvider } from "../react-query/query-client";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "JDwyer Tennis",
@@ -18,9 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Navbar />
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <div className="min-h-screen flex justify-center items-center">
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </div>
         <Footer />
       </body>
     </html>
