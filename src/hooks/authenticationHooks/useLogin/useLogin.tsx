@@ -16,4 +16,3 @@ export default function useLogin() {
   }
   return useMutation(login);
 }
-Server Side Hooks and Create account uses server
