@@ -1,0 +1,51 @@
+/* Styles for input elements */
+#create-account-input {
+  font-size: 15px;
+  margin-right: 10px;
+}
+
+/* Styles for the create account container */
+#create-acount-container {
+  border: 2px solid grey;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+#create-email{
+  font-size: 15px;
+  width: 92.5%;
+  margin-bottom: 15px;
+}
+
+/* Styles for name and surname section */
+#create-name-surname {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+/* Styles for the create account form */
+#create-account-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+
+/* Styles for the password section */
+#create-password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+/* Styles for the register button */
+#register-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

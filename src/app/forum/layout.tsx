@@ -1,6 +1,6 @@
-import Sidebar from "../../components/sideBar/sideBar";
+import Sidebar from "../../components/layoutComponents/sideBar/sideBar";
 import { SidebarData } from "./forumSideBar";
-import "../../components/sideBar/sideBar.css";
+import "../../components/layoutComponents/sideBar/sideBar.css";
 
 export default function RootLayout({
   children,

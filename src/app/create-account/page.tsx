@@ -1,13 +1,15 @@
-import CreateAccount from "../../components/createAccount/createAccount";
+import CreateAccount from "../../components/authenticationComponents/createAccount/createAccount";
 
 function createAccount() {
   return (
     <>
-      <div style={{
-        display: 'flex',
-        alignContent: 'center',
-        justifyContent: 'center',
-      }}>
+      <div
+        style={{
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
+      >
         <CreateAccount></CreateAccount>
       </div>
     </>

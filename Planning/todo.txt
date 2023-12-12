@@ -6,7 +6,7 @@ First:{
     Store Page
     User Dashboard
     Session management
-    Sidebar forum navigation
+    Fix Sidebar forum navigation
 }
 
 Then {

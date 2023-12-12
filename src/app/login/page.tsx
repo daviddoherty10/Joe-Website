@@ -1,4 +1,6 @@
-import Login from "../../components/Login/Login";
+"use server";
+
+import Login from "../../components/authenticationComponents/Login/Login";
 import Link from "next/link";
 
 function login() {
@@ -21,7 +23,9 @@ function login() {
           alignItems: "center",
         }}
       >
-        <h4 style={{paddingRight:'4px'}}>Don't have an acount create one </h4>
+        <h4 style={{ paddingRight: "4px" }}>
+          Don't have an acount create one{" "}
+        </h4>
         <Link href="./create-account">here.</Link>
       </div>
     </>
