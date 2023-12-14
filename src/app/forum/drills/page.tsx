@@ -3,44 +3,63 @@ import React, { useEffect, useState } from "react";
 import ForumInput from "../../../components/forumComponents/forum_input/forum_input";
 import ForumMessage from "../../../components/forumComponents/forum_message/forumMessage";
 import useGetMessages from "../../../hooks/forumHooks/useGetMessages/useGetMessages";
+import pb from "../../../lib/pocketbase";
+import "../main.css";
 
 interface Message {
-  text: string;
+  message: string;
   created: string;
   username: string;
   id: string;
+  expand?: any;
 }
 
 function Forum() {
+  const user_id: string = pb.authStore.model?.id;
   const [messages, setMessages] = useState<Message[]>([]);
 
-  useEffect(() => {
-    const fetchDataAsync = async () => {
-      try {
-        const Firstmessages = await useGetMessages("drills");
-        setMessages(Firstmessages ?? []);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  async function fetchData() {
+    try {
+      const response: any = await useGetMessages("drills");
 
-    fetchDataAsync();
+      setMessages(response ?? []);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData(); // Invoke fetchData inside useEffect
+  }, []); // Empty dependency array ensures it runs once on mount
+
+  useEffect(() => {
+    const subscription = pb
+      .collection("drills")
+      .subscribe("*", async function (e: any) {
+        const user = await pb.collection("users").getOne(e.record.user);
+        e.record.expand = { user: user };
+        setMessages((prevMessages) => [...prevMessages, e.record]);
+      });
+
+    return () => {
+      pb.collection("drills").unsubscribe(); // Cleanup: Unsubscribe from the collection
+    };
   }, []);
 
-  const renderedMessages = messages.map((message) => (
-    <div key={message.id}>
-      <ForumMessage
-        message={message.text}
-        time={message.created}
-        username={message.username}
-      />
-    </div>
-  ));
-
   return (
-    <div>
-      {renderedMessages}
-      <ForumInput src="drills" />
+    <div className="forum-container">
+      {messages.map((message) => (
+        <div key={message.id}>
+          <ForumMessage
+            message={message.message}
+            time={message.created}
+            username={message.expand?.user?.username || ""} // Added a fallback value for username
+          />
+          <div ref={(el) => el?.scrollIntoView({ behavior: "smooth" })}></div>
+        </div>
+      ))}
+
+      <ForumInput src="drills" users_id={user_id} />
     </div>
   );
 }

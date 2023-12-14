@@ -4,12 +4,7 @@ import pb from "../../lib/pocketbase";
 
 async function References() {
   try {
-    const ref = await pb.collection("references").getFullList({
-      sort: "-created",
-    });
-
-    console.log(ref);
-
+    const ref = await pb.collection("references").getFullList();
     return (
       <>
         <div>{}</div>

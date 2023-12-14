@@ -27,13 +27,13 @@ function Navbar() {
         <Link onClick={handleLink} href="/">
           Home
         </Link>
-        <Link onClick={handleLink} href="./references">
+        <Link onClick={handleLink} href="/references">
           Meet Joe
         </Link>
-        <Link onClick={handleLink} href="./store">
+        <Link onClick={handleLink} href="/store">
           Store
         </Link>
-        <Link onClick={handleLink} href="./forum">
+        <Link onClick={handleLink} href="/forum">
           Forum
         </Link>
         {loggedIn === true ? (

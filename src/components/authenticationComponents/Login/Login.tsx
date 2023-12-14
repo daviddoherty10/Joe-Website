@@ -23,9 +23,9 @@ function Login() {
 
   const { register, handleSubmit, reset } = useForm<LoginData>();
 
-  const onSubmit = async (data: LoginData) => {
+  const onSubmit = (data: LoginData) => {
     let isvalid =
-      (await login({ email: data.email, password: data.password })!) || false;
+      login({ email: data.email, password: data.password })! || false;
     if (isvalid === true) {
       router.push("/store");
     }

@@ -1,45 +1,59 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./forum_input.css";
 import useCreateMessage from "../../../hooks/forumHooks/useCreateMessage/useCreateMessage";
+import pb from "../../../lib/pocketbase";
 
-interface ForumInputProps {
-  src: string;
-}
-
-const ForumInput: React.FC<ForumInputProps> = (props) => {
+const ForumInput = (props: any) => {
   const { register, handleSubmit, reset } = useForm();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const signedIn = pb.authStore.isValid;
 
-  const onSubmit = (data: any) => {
-    useCreateMessage(
-      { src: "forum" },
-      { message: data.message, username: "b1quxg5gvqgxsay" }
-    );
-    reset();
-    setIsButtonDisabled(true);
-    setTimeout(() => {
-      setIsButtonDisabled(false);
-    }, 5000);
+  useEffect(() => {
+    if (signedIn === false) {
+      setIsButtonDisabled(true);
+    }
+  }, [signedIn]);
+
+  const onSubmit = async (data: any) => {
+    const id: string = props.users_id;
+
+    if (signedIn != undefined) {
+      useCreateMessage(
+        { src: props.src },
+        { message: data.message, user: id }
+      );
+      reset();
+      setIsButtonDisabled(true);
+      setTimeout(() => setIsButtonDisabled(false), 5000);
+    } else {
+      alert("You must be logged in to post a message");
+    }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmit)} id="message-form">
-        <div>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div id="message-form">
+        <div id="message-box-container">
           <input
             type="text"
-            placeholder="message"
+            placeholder="Message"
             {...register("message")}
             id="message-box"
+            autoFocus
           />
         </div>
-        <div>
-          <input type="submit" value="send" disabled={isButtonDisabled} />
+        <div id="send-button-container">
+          <input
+            type="submit"
+            value="Send"
+            id="send-button"
+            disabled={isButtonDisabled}
+          />
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 

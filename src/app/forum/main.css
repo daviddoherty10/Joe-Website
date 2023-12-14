@@ -1,0 +1,8 @@
+.forum-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 15px;
+    height: 75vh;
+    overflow: hidden;
+    overflow-y: scroll;
+  }

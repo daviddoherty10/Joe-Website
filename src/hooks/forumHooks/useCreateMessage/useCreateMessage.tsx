@@ -8,9 +8,13 @@ interface props {
 
 interface data {
   message: string;
-  username: string;
+  user: string;
 }
 
 export default async function useCreateMessage(props: props, data: data) {
-  await pb.collection(props.src).create(data);
+  try {
+    await pb.collection(props.src).create(data);
+  } catch (e) {
+    console.error(e);
+  }
 }

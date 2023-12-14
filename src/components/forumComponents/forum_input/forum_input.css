@@ -1,9 +1,67 @@
-#message-form{
+#message-form {
+    max-width: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+    background-color: grey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 35px;
+  }
+  
+  #message-box {
+    width: 90vw;
+    height: 5vh;
+    max-width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 25px;
+    border: none;
+    padding: 5px;
+    font-size: 15px;
+    color: black;
+  }
+  #send-button {
+    width: 14vw;
+    max-width: 60px;
+    margin-left: 5px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(5, 163, 237); 
+    right: 0; 
+    top: 0;
+    color:black
+  }
 
-#message-box{
-    margin-right: 20px;
-}
+  #send-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #send-button:disabled {
+    background-color: rgb(99, 99, 99);
+  }
+
+  #send-button:hover {
+    background-color: rgb(0, 113, 166);
+  }
+
+  #send-button:disabled:hover {
+    background-color: rgb(199, 135, 31);
+  }
+
+  @media screen and (max-width: 600px) {
+    /* Your CSS styles for screens less than 600px width */
+    #message-box{
+        font-size: 12px;
+        max-width: 40vw;
+        min-width: 10vw;
+    }
+  }
