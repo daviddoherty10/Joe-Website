@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import ForumInput from "../../../components/forumComponents/forum_input/forum_input";
 import ForumMessage from "../../../components/forumComponents/forum_message/forumMessage";
-import useGetMessages from "../../../hooks/forumHooks/useGetMessages/useGetMessages";
+import UseGetMessages from "../../../hooks/forumHooks/UseGetMessages/UseGetMessages";
 import pb from "../../../lib/pocketbase";
+import ForumCurrentUserMessage from "../../../components/forumComponents/forum_current_user_message/forumCurrentUserMessage";
 import "../main.css";
 
 interface Message {
@@ -20,7 +21,7 @@ function Forum() {
 
   async function fetchData() {
     try {
-      const response: any = await useGetMessages("drills");
+      const response: any = await UseGetMessages("drills");
 
       setMessages(response ?? []);
     } catch (error) {
@@ -46,20 +47,41 @@ function Forum() {
     };
   }, []);
 
-  return (
-    <div className="forum-container">
-      {messages.map((message) => (
-        <div key={message.id}>
-          <ForumMessage
-            message={message.message}
-            time={message.created}
-            username={message.expand?.user?.username || ""} // Added a fallback value for username
-          />
-          <div ref={(el) => el?.scrollIntoView({ behavior: "smooth" })}></div>
-        </div>
-      ))}
+  function formatTimestamp(timestamp: string) {
+    const date = new Date(timestamp);
+    return date.toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  }
 
-      <ForumInput src="drills" users_id={user_id} />
+  return (
+    <div className="forum-wrapper">
+      <div className="forum-container">
+        {messages.map((message: Message) => (
+          <div key={message.id}>
+            {message.expand?.user?.id === pb.authStore.model?.id ? (
+              <ForumCurrentUserMessage
+                message={message.message}
+                time={formatTimestamp(message.created)}
+                username={message.expand?.user?.username}
+              />
+            ) : (
+              <ForumMessage
+                message={message.message}
+                time={formatTimestamp(message.created)}
+                username={message.expand?.user?.username}
+              />
+            )}
+          </div>
+        ))}
+        <div ref={(el) => el?.scrollIntoView({ behavior: "smooth" })}></div>
+      </div>
+      <div className="forum-input-container">
+        <ForumInput src="drills" users_id={pb.authStore.model?.id} />
+      </div>
     </div>
   );
 }

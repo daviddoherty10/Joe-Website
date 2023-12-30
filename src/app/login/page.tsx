@@ -24,7 +24,7 @@ function login() {
         }}
       >
         <h4 style={{ paddingRight: "4px" }}>
-          Don't have an acount create one{" "}
+          Don{'&apos;'}t have an acount create one  
         </h4>
         <Link href="./create-account">here.</Link>
       </div>

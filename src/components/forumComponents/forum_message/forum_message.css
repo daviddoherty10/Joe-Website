@@ -1,15 +1,74 @@
-.forum-message-container{
-    border-radius: 10px;
-    border-color: grey;
-    border-style: solid;
-    border-width: 1px;
-    padding: 10px;
-    margin-bottom: 8px;
-    background-color: rgb(218, 218, 218);
+.forum-message-container {
+  border-radius: 10px;
+  background-color: #f2f3f5; /* Light grey color for contrast */
+  border: 1px solid #d1d1d1; /* A lighter grey for the border */
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+  margin-right: auto; /* Push the message box to the left */
+  margin-left: 0;
+  
 }
 
-.forum-username-time{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+.forum-message-header {
+  display: flex;
+  justify-content: space-between; /* Aligns username and time on opposite ends */
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.forum-message-username {
+  font-size: 1rem;
+  color: #000000; /* Dark grey for better readability */
+  margin: 0; /* Remove the default margin */
+  font-weight: 600; /* Make username bold */
+}
+
+.forum-message-time {
+  font-size: 0.8rem;
+  color: #000000; /* Lighter text for the time */
+  margin: 0; /* Remove the default margin */
+}
+
+.forum-message-text {
+  font-size: 0.9rem;
+  color: #000000; /* Slightly lighter than username color */
+  margin: 0; /* Remove the default margin */
+  white-space: pre-wrap; /* Preserve whitespaces and new lines */
+  word-wrap: break-word; /* Ensure long words do not overflow */
+}
+
+.current-user-message {
+  background-color: lightblue;
+  color: rgb(0, 0, 0);
+  border-radius: 10px; /* Light grey color for contrast */
+  border: 1px solid #d1d1d1; /* A lighter grey for the border */
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+  .forum-message-container {
+    padding: 10px;
+  }
+
+  .forum-message-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .forum-message-time {
+    margin-top: 5px;
+    font-size: 0.75rem;
+  }
+
+  .forum-message-text {
+    font-size: 0.85rem;
+  }
 }

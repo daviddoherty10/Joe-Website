@@ -1,19 +1,16 @@
-"use server";
+"use client";
 
 import pb from "../../../lib/pocketbase";
-
-interface props {
-  src: string;
-}
 
 interface data {
   message: string;
   user: string;
+  src: string;
 }
 
-export default async function useCreateMessage(props: props, data: data) {
+export default async function UseCreateMessage({ src, message, user }: data) {
   try {
-    await pb.collection(props.src).create(data);
+    pb.collection(src).create({ message: message, user: user });
   } catch (e) {
     console.error(e);
   }

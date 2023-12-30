@@ -1,6 +1,6 @@
 import "./main.css";
 
-export default function () {
+export default function NotFoundPage() {
   return (
     <>
       <div id="not-found-container">

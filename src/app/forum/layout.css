@@ -1,0 +1,16 @@
+#sidebar-container-forum {
+    background-color: grey; /* Lighter grey color on hover */
+  }
+  
+  #sidebar-container-forum ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+  }
+  
+#forum-children-container {
+    width: 100%; /* Full width of the forum-wrapper */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 70vw; /* Maximum width of the container */
+}

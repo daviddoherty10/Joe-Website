@@ -1,21 +1,32 @@
-#sidebar-li{
-    padding-left: 10px;
-    padding-top: 15px;
-    padding-bottom: 20px;
-    background-color: grey;
-    height: 100%
+#sidebar-li {
+  padding: 15px 10px 20px;
+  background-color: grey;
+  display: flex; /* Make the li flex container */
+  align-items: center; /* Center items vertically */
+  height: 100%;
 }
 
-#sidebar-link{
-    text-decoration: none;
-    font-size: 15px;
-    color: black;
-    padding-left: 8px;
-    padding-right: 15px;
-    height: 100%;
+#sidebar-link {
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  padding: 0 15px; /* Adjusted padding for symmetry */
+  display: block; /* Make the link fill the li */
+  width: 100%; /* Full width to the parent li */
+  box-sizing: border-box; /* Include padding in the width */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
-#sidebar-container-forum{
-    margin-right: 10px;
-    padding-right: 0px;
+#sidebar-li:hover {
+  background-color: #b0bec5; /* Lighter grey color on hover */
+}
+
+#sidebar-container-forum {
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  #sidebar-link {
+    font-size: 14px; /* Slightly smaller font on mobile */
+  }
 }

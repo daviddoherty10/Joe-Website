@@ -11,10 +11,11 @@ function Navbar() {
   const [active, setActive] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const logout = useLogout();
+  const user = pb.authStore.model;
 
   useEffect(() => {
     setLoggedIn(pb.authStore.isValid || false);
-  }, []);
+  }, [active]);
 
   const handleLink = () => {
     setActive(false);
@@ -37,23 +38,22 @@ function Navbar() {
           Forum
         </Link>
         {loggedIn === true ? (
-          <Link
-            onClick={() => {
-              logout(); // Invoke the logout function
-              setLoggedIn(false); // Update loggedIn state
-              setActive(false);
-            }}
-            className="nav-btn"
-            style={{
-              border: "none",
-              background: "none",
-              color: "var(--textColor)",
-              fontSize: "1.4rem",
-            }}
-            href="./login"
-          >
-            Sign Out
-          </Link>
+          <div className="dropdown">
+            <button className="dropbtn">{user?.username}</button>
+            <div className="dropdown-content">
+              <Link href="./account">Account</Link>
+              <Link
+                onClick={() => {
+                  logout(); // Invoke the logout function
+                  setLoggedIn(false); // Update loggedIn state
+                  setActive(false);
+                }}
+                href="./login"
+              >
+                Sign Out
+              </Link>
+            </div>
+          </div>
         ) : (
           <Link onClick={handleLink} href="./login">
             Login

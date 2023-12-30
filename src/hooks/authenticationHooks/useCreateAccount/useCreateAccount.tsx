@@ -11,6 +11,6 @@ interface data {
   passwordConfirm: string;
 }
 
-export default async function useCreateAccount(data: data) {
+export default async function UseCreateAccount(data: data) {
   await pb.collection("users").create(data);
 }

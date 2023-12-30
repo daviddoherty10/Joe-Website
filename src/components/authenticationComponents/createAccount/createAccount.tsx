@@ -6,7 +6,7 @@ import { MdEmail } from "react-icons/md";
 import { FaLock } from "react-icons/fa";
 import { redirect } from "next/navigation";
 import { useState } from "react";
-import useCreateAccount from "../../../hooks/authenticationHooks/useCreateAccount/useCreateAccount";
+import UseCreateAccount from "../../../hooks/authenticationHooks/UseCreateAccount/UseCreateAccount";
 
 function CreateAccount() {
   const [submitted, setSubmitted] = useState(false);
@@ -29,7 +29,7 @@ function CreateAccount() {
 
   const onSubmit = async (data: CreateAccountState) => {
     try {
-      await useCreateAccount(data);
+      await UseCreateAccount(data);
     } catch (error) {
       console.error("Error creating account:", error);
     }
