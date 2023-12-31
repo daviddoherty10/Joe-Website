@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "express": "^4.18.2",
     "flaschenpost": "^5.1.1",
     "lodash": "4.17.21",
     "next": "^14.0.4",
