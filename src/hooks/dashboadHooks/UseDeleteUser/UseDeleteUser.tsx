@@ -2,6 +2,8 @@
 
 import pb from "../../../lib/pocketbase";
 
-export default function UseDeleteUser(id: string) {
-  pb.collection("users").delete(id);
+export default async function UseDeleteUser(id: string) {
+  try {
+    await pb.collection("users").delete(id);
+  } catch (e) {}
 }

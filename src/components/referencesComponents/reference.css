@@ -1,0 +1,25 @@
+/* Reference.module.css */
+.referenceContainer {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  
+  .referenceHeader {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+  }
+  
+  .referenceYearsWorked {
+    color: #666;
+    font-style: italic;
+  }
+  
+  .referenceDescription {
+    color: #444;
+    margin-top: 8px;
+  }

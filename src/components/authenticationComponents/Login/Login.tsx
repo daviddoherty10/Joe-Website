@@ -5,9 +5,10 @@ import pb from "../../../lib/pocketbase";
 import useLogin from "../../../hooks/authenticationHooks/useLogin/useLogin";
 import { BiUser } from "react-icons/bi";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
+import checkVerified from "../../../hooks/authenticationHooks/useVerified/checkVerified";
+import { redirect } from "next/navigation";
 
 interface LoginData {
   email: string;
@@ -15,28 +16,40 @@ interface LoginData {
 }
 
 function Login() {
-  const router = useRouter();
-
+  // Assuming useLogin returns a promise.
   const { mutate: login, isLoading, isError } = useLogin();
 
-  const isLoggedIn = pb.authStore.isValid;
+  // Remove the explicit comparison since isLoggedIn is already a boolean.
+  if (pb.authStore.isValid) {
+    redirect("/store");
+  }
 
   const { register, handleSubmit, reset } = useForm<LoginData>();
 
-  const onSubmit = (data: LoginData) => {
-    let isvalid =
-      login({ email: data.email, password: data.password })! || false;
-    if (isvalid === true) {
-      router.push("/store");
+  const onSubmit = async (data: LoginData) => {
+    try {
+      // Call the login function with await to handle the promise.
+      await login({ email: data.email, password: data.password });
+      redirect("/store");
+    } catch (error) {
+      // Handle the error case if login fails.
+      console.error("Login failed:", error);
     }
     reset();
   };
 
   useEffect(() => {
-    if (isLoggedIn === true) {
-      router.push("/create-account/verify-account"); // Redirect if user is logged in
-    }
-  }, [isLoggedIn, router]);
+    // Immediately invoked async function to handle the promise.
+    (async () => {
+      const isVerified = await checkVerified();
+      if (isVerified) {
+        redirect("/store");
+      }
+      // The else clause has been removed since it's empty.
+    })();
+  }, [pb.authStore.isValid]); // Assuming this dependency is reactive.
+
+  // The rest of the component remains the same.
 
   return (
     <>

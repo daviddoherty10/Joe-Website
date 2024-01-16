@@ -15,8 +15,9 @@ interface Message {
   expand?: any;
 }
 
-function Forum() {
+export default function Forum() {
   const [messages, setMessages] = useState<Message[]>([]);
+  console.log(pb.authStore.model?.id);
 
   useEffect(() => {
     async function fetchData() {
@@ -76,10 +77,8 @@ function Forum() {
         <div ref={(el) => el?.scrollIntoView({ behavior: "smooth" })}></div>
       </div>
       <div className="forum-input-container">
-        <ForumInput src="forum" users_id={pb.authStore.model?.id} />
+        <ForumInput src="forum" />
       </div>
     </div>
   );
 }
-
-export default Forum;

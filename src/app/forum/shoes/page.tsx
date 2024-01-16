@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ForumInput from "../../../components/forumComponents/forum_input/forum_input";
 import ForumMessage from "../../../components/forumComponents/forum_message/forumMessage";
 import UseGetMessages from "../../../hooks/forumHooks/UseGetMessages/UseGetMessages";
@@ -16,7 +16,6 @@ interface Message {
 }
 
 function Forum() {
-  const user_id: string = pb.authStore.model?.id;
   const [messages, setMessages] = useState<Message[]>([]);
 
   async function fetchData() {
@@ -80,7 +79,7 @@ function Forum() {
         <div ref={(el) => el?.scrollIntoView({ behavior: "smooth" })}></div>
       </div>
       <div className="forum-input-container">
-        <ForumInput src="shoes" users_id={pb.authStore.model?.id} />
+        <ForumInput src="shoes" />
       </div>
     </div>
   );

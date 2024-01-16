@@ -1,11 +1,14 @@
 "use client";
-import UseCreateMessage from "../../../hooks/forumHooks/UseCreateMessage/UseCreateMessage";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import pb from "../../../lib/pocketbase";
 import "./forum_input.css";
 
-const ForumInput = (props: any) => {
+interface Props {
+  src: string;
+}
+
+const ForumInput = (props: Props) => {
   const { register, handleSubmit, reset } = useForm();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const signedIn = pb.authStore.isValid;
@@ -18,11 +21,9 @@ const ForumInput = (props: any) => {
 
   const onSubmit = async (data: any) => {
     if (signedIn != undefined) {
-      UseCreateMessage({
-        src: props.src,
-        message: data.message,
-        user: props.users_id,
-      });
+      try {
+        await pb.collection(props.src).create({ "message": data.message, "user": pb.authStore.model?.id });
+      } catch (e) {}
       reset();
       setIsButtonDisabled(true);
       setTimeout(() => setIsButtonDisabled(false), 5000);

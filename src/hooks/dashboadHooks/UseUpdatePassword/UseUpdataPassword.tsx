@@ -6,9 +6,11 @@ interface data{
     oldPassword: string;
     newPassword: string;
     newPasswordConfirm: string;
-    user: [];
 }
 
-export default async function UseUpdatePassword(data: data) {
-    
+export default async function UseUpdatePassword(id: string, data: data) {
+    await pb.collection("users").update(id, {
+        "password": data.newPassword,
+        "passwordConfirm": data.newPasswordConfirm
+    });
 }

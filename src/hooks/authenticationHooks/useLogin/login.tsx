@@ -7,6 +7,10 @@ interface Login {
 }
 
 export default async function login({ email, password }: Login) {
-  return await pb.collection("users").authWithPassword(email, password);
+  try{
+  return await pb.collection("users").authWithPassword(email, password);}
+  catch (e) {
+    return e
+  }
   // Handle successful authentication
 }

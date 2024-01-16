@@ -39,7 +39,6 @@ export default function Dashboard() {
   const handleSubmitUsername = () => {};
 
   const handleDeletion = async () => {
-    console.log("user.id", user?.id);
     await pb.collection("users").delete(user?.id);
     redirect("/login");
   };

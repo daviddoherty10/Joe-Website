@@ -12,14 +12,18 @@ function Navbar() {
   const [loggedIn, setLoggedIn] = useState(false);
   const logout = useLogout();
   const user = pb.authStore.model;
+  const [ num, setNum] = useState(0);
+
+  const handleLink = () => {
+    setNum(num + 1);
+    setActive(false);
+  };
 
   useEffect(() => {
     setLoggedIn(pb.authStore.isValid || false);
-  }, [active]);
+  }, [num]);
 
-  const handleLink = () => {
-    setActive(false);
-  };
+
 
   return (
     <header>
