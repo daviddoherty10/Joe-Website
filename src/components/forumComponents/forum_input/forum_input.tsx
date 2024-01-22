@@ -19,7 +19,7 @@ const ForumInput = (props: Props) => {
     }
   }, [signedIn]);
 
-  const onSubmit = async (data: any) => {
+  const onSubmitForumInput = async (data: any) => {
     if (signedIn != undefined) {
       try {
         await pb.collection(props.src).create({ "message": data.message, "user": pb.authStore.model?.id });
@@ -33,7 +33,7 @@ const ForumInput = (props: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmitForumInput)}>
       <div id="message-form">
         <input
           type="text"

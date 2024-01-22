@@ -17,7 +17,6 @@ interface Message {
 
 export default function Forum() {
   const [messages, setMessages] = useState<Message[]>([]);
-  console.log(pb.authStore.model?.id);
 
   useEffect(() => {
     async function fetchData() {

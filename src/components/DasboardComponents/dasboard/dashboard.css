@@ -1,0 +1,163 @@
+/* dashboard.css - Modern styling template with unique class names */
+
+/* Reset for margin and padding */
+.dashboard-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body font for a modern look */
+.dashboard-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Common button styling */
+.button {
+  display: inline-block;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Header styles */
+.mod-header {
+  background: #333;
+  color: #ffffff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Card component */
+.mod-card {
+  background: #ffffff;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Input field styling */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Utility classes for spacing */
+.mod-mt-1 {
+  margin-top: 10px;
+}
+.mod-mb-1 {
+  margin-bottom: 10px;
+}
+.mod-ml-1 {
+  margin-left: 10px;
+}
+.mod-mr-1 {
+  margin-right: 10px;
+}
+
+.mod-mt-2 {
+  margin-top: 20px;
+}
+.mod-mb-2 {
+  margin-bottom: 20px;
+}
+.mod-ml-2 {
+  margin-left: 20px;
+}
+.mod-mr-2 {
+  margin-right: 20px;
+}
+
+/* Text utility classes */
+.mod-text-center {
+  text-align: center;
+}
+.mod-text-left {
+  text-align: left;
+}
+.mod-text-right {
+  text-align: right;
+}
+
+.delete-account{
+  display: inline-block;
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  margin: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Colors */
+.mod-primary-bg {
+  background-color: #007bff;
+}
+.mod-secondary-bg {
+  background-color: #6c757d;
+}
+.mod-success-bg {
+  background-color: #28a745;
+}
+.mod-danger-bg {
+  background-color: #dc3545;
+}
+.mod-warning-bg {
+  background-color: #ffc107;
+}
+.mod-info-bg {
+  background-color: #17a2b8;
+}
+.mod-light-bg {
+  background-color: #f8f9fa;
+}
+.mod-dark-bg {
+  background-color: #343a40;
+}
+
+.mod-primary-text {
+  color: #007bff;
+}
+.mod-secondary-text {
+  color: #6c757d;
+}
+.mod-success-text {
+  color: #28a745;
+}
+.mod-danger-text {
+  color: #dc3545;
+}
+.mod-warning-text {
+  color: #ffc107;
+}
+.mod-info-text {
+  color: #17a2b8;
+}
+.mod-light-text {
+  color: #f8f9fa;
+}
+.mod-dark-text {
+  color: #343a40;
+}

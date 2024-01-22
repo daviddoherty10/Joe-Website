@@ -5,8 +5,6 @@
   margin-bottom: 10px;
 }
 
-
-
 .current-user-message {
   display: flex;
   flex-direction: row-reverse; /* Reverse the order of flex items */
@@ -18,11 +16,11 @@
 .forum-message-current-user-username {
   display: flex;
   align-self: flex-start;
+  margin-right: 60px;
 }
 .forum-message-time {
   font-size: 0.8rem;
   color: #000000; /* Lighter text for the time */
-  margin-left: 35; /* Remove the default margin */
 }
 
 .forum-message-text {
@@ -65,5 +63,14 @@
 
   .forum-message-text {
     font-size: 0.85rem;
+  }
+  .forum-message-current-user-username {
+    display: flex;
+    align-self: flex-start;
+    margin-right: 0px;
+  }
+  .current-user-message{
+    max-width: 40%;
+    padding: 8px;
   }
 }

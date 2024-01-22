@@ -1,45 +1,48 @@
 /* Styles for input elements */
-#create-account-input {
+.create-account-input {
   font-size: 15px;
   margin-right: 10px;
+  margin-left: 8px;
+  margin-top: 5px;
+  width: 85%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.create-email {
+  font-size: 15px;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 /* Styles for the create account container */
-#create-acount-container {
+#create-account-container {
   border: 2px solid grey;
   border-radius: 15px;
   padding: 20px;
   margin-top: 50px;
-}
-
-#create-email{
-  font-size: 15px;
-  width: 92.5%;
-  margin-bottom: 15px;
+  width: 400px; /* Adjust the width as needed */
+  margin: 50px auto;
 }
 
 /* Styles for name and surname section */
 #create-name-surname {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding-bottom: 15px;
 }
 
 /* Styles for the create account form */
 #create-account-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin-top: 15px;
 }
-
 
 /* Styles for the password section */
 #create-password {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding-bottom: 15px;
 }
 
@@ -48,4 +51,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
+}
+
+#register-button button {
+  background-color: #397bde;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#register-button button:hover {
+  background-color: #de6039;
 }

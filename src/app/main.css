@@ -16,3 +16,24 @@
   color: grey;
 }
 
+
+/* styles.css */
+
+/* Define the animation */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply the animation to the div */
+.rotating-div {
+  width: 100px;
+  height: 100px;
+  background-color: #ffffff00;
+  animation: rotate 2s ease-in-out infinite; /* Adjust the duration and other properties as needed */
+}
+

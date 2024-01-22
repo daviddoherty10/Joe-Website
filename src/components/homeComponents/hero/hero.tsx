@@ -1,49 +1,29 @@
-"use server";
+"use client";
 
+import React from "react";
+import ReactPlayer from "react-player";
 import "./hero.css";
 
-interface ImageTypes {
-  collectionId: string;
-  recordId: string;
-  fileName: string;
-  size: string;
-}
-
-async function getImageSrc({
-  collectionId,
-  recordId,
-  fileName,
-  size = "0x0",
-}: ImageTypes) {
-  return `http://127.0.0.1:8090/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
-}
-
-const Hero: React.FC = () => {
-  const imageSrc: any = async function fetchData() {
-    const exampleParams: ImageTypes = {
-      collectionId: "hero_section",
-      recordId: "0zvdbiapi4dsdpq",
-      fileName: "hero_hnCqXU7wh3.png",
-      size: "0x0",
-    };
-
-    try {
-      const imageUrl = await getImageSrc(exampleParams);
-      return imageUrl;
-    } catch (error) {
-      // Handle errors if needed
-      console.error("Error fetching image:", error);
-    }
-  };
-
-  // Run once on component mount
-
+export default function Hero(){
   return (
-    <>
-      <div>
+    <div className="hero-section">
+      <div className="video-wrapper">
+        <ReactPlayer
+          url="your-video-url.mp4" // Replace with your video URL
+          playing={true}
+          loop={true}
+          muted={true}
+          width="100%"
+          height="100%"
+          style={{ position: "absolute", top: 0, left: 0 }}
+        />
       </div>
-    </>
+      <div className="content">
+        {/* Your other content goes here */}
+        <h1>Your Title</h1>
+        <p>Your description</p>
+      </div>
+    </div>
   );
 };
 
-export default Hero;

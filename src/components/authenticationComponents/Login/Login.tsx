@@ -1,14 +1,14 @@
 "use client";
 
-import "./login.css";
-import pb from "../../../lib/pocketbase";
-import useLogin from "../../../hooks/authenticationHooks/useLogin/useLogin";
-import { BiUser } from "react-icons/bi";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { useForm } from "react-hook-form";
-import { useEffect } from "react";
 import checkVerified from "../../../hooks/authenticationHooks/useVerified/checkVerified";
+import useLogin from "../../../hooks/authenticationHooks/useLogin/useLogin";
+import { RiLockPasswordLine } from "react-icons/ri";
 import { redirect } from "next/navigation";
+import { useForm } from "react-hook-form";
+import pb from "../../../lib/pocketbase";
+import { BiUser } from "react-icons/bi";
+import { useEffect } from "react";
+import "./login.css";
 
 interface LoginData {
   email: string;
@@ -21,7 +21,7 @@ function Login() {
 
   // Remove the explicit comparison since isLoggedIn is already a boolean.
   if (pb.authStore.isValid) {
-    redirect("/store");
+    redirect("/create-account/verify-account");
   }
 
   const { register, handleSubmit, reset } = useForm<LoginData>();
@@ -30,7 +30,7 @@ function Login() {
     try {
       // Call the login function with await to handle the promise.
       await login({ email: data.email, password: data.password });
-      redirect("/store");
+      redirect("/create-account/verify-account");
     } catch (error) {
       // Handle the error case if login fails.
       console.error("Login failed:", error);
@@ -82,7 +82,7 @@ function Login() {
               />
             </div>
             <div id="unique-login-form-container">
-              <button type="submit" disabled={isLoading}>
+              <button id="login-button" type="submit" disabled={isLoading}>
                 {isLoading ? "Logging in..." : "Login"}
               </button>
             </div>

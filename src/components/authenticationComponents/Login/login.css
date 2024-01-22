@@ -28,7 +28,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  padding: 10px;
+}
+
+#login-button{
+  background-color: #397bde;
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 /* Styles for error message */

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import Dasboard from "../../components/adminDasboardComponents/dasboard/dashboard";
+import Dashboard from "../../components/DasboardComponents/dasboard/test";
 
 export default function Account() {
-    return (
-        <>
-            <h1>Account</h1>
-            <Dasboard />
-        </>
-    );
+  return (
+    <>
+      <h1>Account</h1>
+      <Dashboard />
+    </>
+  );
 }
